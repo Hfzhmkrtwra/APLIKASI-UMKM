@@ -42,7 +42,7 @@ export async function ambilDaftarBarang() {
       stok: dokumen.data().stok
     })
   })
-
+  
   return hasilKueri;
 }
 
@@ -79,8 +79,7 @@ export async function hapusBarang(id) {
 export async function ubahBarang(id, namabaru, hargabaru, stokbaru) {
   try {
     await updateDoc(
-      doc(basisdata, "aplikasi_umkm", id), 
-      { nama: namabaru, harga: hargabaru, stok: stokbaru }
+      doc(basisdata, "aplikasi_umkm", id), { nama: namabaru, harga: hargabaru, stok: stokbaru }
     )
     console.log('Berhasil mengubah data barang')
     return true;
@@ -95,7 +94,7 @@ export async function ambilBarang(id) {
   try {
     const refDokumen = doc(basisdata, "aplikasi_umkm", id)
     const snapshotDokumen = await getDoc(refDokumen)
-
+    
     if (snapshotDokumen.exists()) {
       return {
         id: snapshotDokumen.id,
